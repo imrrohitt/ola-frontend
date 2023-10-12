@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 class LocationComponent extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       locationResult: '',
+      error: '',
     };
   }
 
@@ -14,26 +15,20 @@ class LocationComponent extends Component {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        const geocoder = new window.google.maps.Geocoder(); // Note: Replace "window.google" with the way you load the Google Maps API in your React app
-
-        const latLng = new window.google.maps.LatLng(latitude, longitude);
-
-        geocoder.geocode({ 'location': latLng }, (results, status) => {
-          if (status === window.google.maps.GeocoderStatus.OK) {
-            if (results[1]) {
-              const locationName = results[1].formatted_address;
-              const locationResult = `Location: ${locationName}<br>Latitude: ${latitude}<br>Longitude: ${longitude}`;
-              this.setState({ locationResult });
-            } else {
-              this.setState({ locationResult: "Location not found" });
-            }
-          } else {
-            this.setState({ locationResult: `Geocoder failed due to: ${status}` });
-          }
-        });
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+          .then(response => response.json())
+          .then(data => {
+            const locationName = data.display_name || "Location not found";
+            const locationResult = `Location: ${locationName}<br>Latitude: ${latitude}<br>Longitude: ${longitude}`;
+            this.setState({ locationResult });
+          })
+          .catch(error => {
+            console.error("Error fetching location data:", error);
+            this.setState({ error: "Error fetching location data" });
+          });
       });
     } else {
-      this.setState({ locationResult: "Geolocation is not supported by your browser." });
+      this.setState({ error: "Geolocation is not supported by your browser." });
     }
   }
 
@@ -43,10 +38,14 @@ class LocationComponent extends Component {
         <h1>Get Current Location</h1>
         <p>Click the button to get your current location:</p>
         <button onClick={this.getLocation}>Get Location</button>
-        <p dangerouslySetInnerHTML={{ __html: this.state.locationResult }}></p>
+        {this.state.error ? (
+          <p>{this.state.error}</p>
+        ) : (
+          <p dangerouslySetInnerHTML={{ __html: this.state.locationResult }} />
+        )}
       </div>
     );
   }
 }
 
-export default Location;
+export default LocationComponent;
