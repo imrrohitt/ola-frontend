@@ -1,0 +1,47 @@
+name: Ola React
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - master
+
+jobs:
+  prettier-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Prettier Lint
+        run: |
+          npm install
+          npx prettier --check
+        env:
+          NODE_OPTIONS: --max-old-space-size=3072
+
+  install-build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: |
+          npm install
+          npm run build
+          npm run test
+        env:
+          NODE_OPTIONS: --max-old-space-size=3072
