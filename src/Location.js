@@ -1,55 +1,75 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { LOCATION_API_ENDPOINT } from './api/Api';
 import New from './New';
 
-class LocationComponent extends Component {
-  constructor() {
-    super();
-    this.state = {
-      locationResult: '',
-      error: '',
-    };
-  }
+const saveLocation = (latitude, longitude) => {
+  return axios.post(LOCATION_API_ENDPOINT, { latitude, longitude })
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error('Error saving location data:', error);
+      throw error;
+    });
+};
 
-  getLocation = () => {
-    if ("geolocation" in navigator) {
+const getLocationData = (latitude, longitude) => {
+  const locationEndpoint = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+  return axios.get(locationEndpoint)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error('Error fetching location data:', error);
+      throw error;
+    });
+};
+
+const LocationComponent = () => {
+  const [locationResult, setLocationResult] = useState('');
+  const [error, setError] = useState('');
+
+  const getLocation = () => {
+    if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
-          .then(response => response.json())
-          .then(data => {
-            const locationName = data.display_name || "Location not found";
-            const locationResult = `Location: ${locationName}<br>Latitude: ${latitude}<br>Longitude: ${longitude}`;
-            this.setState({ locationResult });
+        // Save the location to the server using the Api
+        saveLocation(latitude, longitude)
+          .then(() => {
+            // Fetch and set location data
+            getLocationData(latitude, longitude)
+              .then((data) => {
+                const locationName = data.display_name || 'Location not found';
+                const result = `Location: ${locationName}<br>Latitude: ${latitude}<br>Longitude: ${longitude}`;
+                setLocationResult(result);
+              })
+              .catch(() => {
+                setError('Error fetching location data');
+              });
           })
-          .catch(error => {
-            console.error("Error fetching location data:", error);
-            this.setState({ error: "Error fetching location data" });
+          .catch(() => {
+            setError('Error saving location data');
           });
       });
     } else {
-      this.setState({ error: "Geolocation is not supported by your browser." });
+      setError('Geolocation is not supported by your browser.');
     }
-  }
+  };
 
-  render() {
-    return (
-      <>
+  return (
+    <>
       <div>
         <h1>Get Current Location</h1>
         <p>Click the button to get your current location:</p>
-        <button onClick={this.getLocation}>Get Location</button>
-        {this.state.error ? (
-          <p>{this.state.error}</p>
+        <button onClick={getLocation}>Get Location</button>
+        {error ? (
+          <p>{error}</p>
         ) : (
-          <p dangerouslySetInnerHTML={{ __html: this.state.locationResult }} />
+          <p dangerouslySetInnerHTML={{ __html: locationResult }} />
         )}
       </div>
-      <New/>
-      </>
-    );
-  }
-}
+      <New />
+    </>
+  );
+};
 
 export default LocationComponent;
