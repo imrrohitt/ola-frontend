@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import New from './New';
 
 class LocationComponent extends Component {
   constructor() {
@@ -35,7 +34,6 @@ class LocationComponent extends Component {
 
   render() {
     return (
-      <>
       <div>
         <h1>Get Current Location</h1>
         <p>Click the button to get your current location:</p>
@@ -46,8 +44,6 @@ class LocationComponent extends Component {
           <p dangerouslySetInnerHTML={{ __html: this.state.locationResult }} />
         )}
       </div>
-      <New/>
-      </>
     );
   }
 }
