@@ -1,0 +1,93 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    background-image: url('./taxi_bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+  }
+  .container {
+    height: 51.25em;
+    width: 51.25em;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+  }
+  .car {
+    position: absolute;
+    top: 8.5%;
+    transition: transform 1s;
+    transform: rotate(180deg);
+  }
+  
+  #car {
+    width: 27%;
+    height: auto;
+  }
+  
+  form {
+    width: 43.75em;
+    height: 38.75em;
+    background-color: #ffffff;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: calc(50% + 3.1em);
+    left: 50%;
+    padding: 0 3.1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.5em;
+  }
+  form label {
+    display: block;
+    margin-bottom: 0.2em;
+    font-weight: 600;
+    color: #2e0d30;
+  }
+  form input {
+    font-size: 0.95em;
+    font-weight: 400;
+    color: #3f3554;
+    padding: 0.3em;
+    border: none;
+    border-bottom: 0.12em solid #3f3554;
+    outline: none;
+  }
+  form input:focus {
+    border-color: #71c418;
+  }
+  
+  form input::placeholder {
+    color: #b4b5b3;
+  }
+  
+  form input:not(:last-child) {
+    margin-bottom: 0.9em;
+  }
+  form button {
+    font-size: 0.95em;
+    padding: 0.8em 0;
+    width: 18.6em;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background-color: #c41857;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.15em;
+    margin-top: 0.8em;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .container {
+      font-size: 14px;
+    }
+  }
