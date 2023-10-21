@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import './index.css';
-import img from '../../images/car_in_blue_color_high_tech-removebg-preview.png'
-import img2 from '../../images/car_in_blue_color-removebg-preview.png'
+import img from '../../images/car_in_blue_color_high_tech-removebg-preview.png';
+import img2 from '../../images/car_in_blue_color-removebg-preview.png';
 
 function Index() {
   useEffect(() => {
@@ -29,23 +30,28 @@ function Index() {
   return (
     <div>
       <header id="header">
-        <a href="#" className="logo">
+        <Link to="/" className="logo">
           Car Booking
-        </a>
+        </Link>
         <ul>
+        <li>
+            <Link to="/login" className="active">
+              Login
+            </Link>
+          </li>
           <li>
-            <a href="#" className="active">
+            <Link to="/" className="active">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#about">About Us</a>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <a href="#book">Book a Car</a>
+            <Link to="/book">Book a Car</Link>
           </li>
           <li>
-            <a href="#contact">Contact Us</a>
+            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
       </header>
@@ -56,20 +62,19 @@ function Index() {
           Anytime, Anywhere
         </h2>
         <img src={img} id="carImage" alt="Car" />
-        <a href="#book" id="btn" className="btn">
+        <Link to="/book" id="btn" className="btn">
           Book Now
-        </a>
+        </Link>
       </section>
       <div id="about" className="sec">
         <h2>About Us</h2>
         <p>
-  Welcome to CarBooking.com, your premier destination for hassle-free car rentals. We take pride in providing an exceptional and affordable way for you to explore your destination. With an extensive fleet of vehicles and flexible booking options, we ensure that your journey is smooth and enjoyable.
-  </p>
-
+          Welcome to CarBooking.com, your premier destination for hassle-free car rentals. We take pride in providing an exceptional and affordable way for you to explore your destination. With an extensive fleet of vehicles and flexible booking options, we ensure that your journey is smooth and enjoyable.
+        </p>
       </div>
       <div id="book" className="sec">
         <h2>Book a Car</h2> <img src={img2} alt="car" id='car-second' />
-        <form>
+        <div id="book_now">
           <div className="form-group">
             <label htmlFor="pickupLocation">Pickup Location</label>
             <input type="text" id="pickupLocation" name="pickupLocation" required />
@@ -98,7 +103,7 @@ function Index() {
           <button type="submit" className="btn">
             Book Now
           </button>
-        </form>
+        </div>
       </div>
       <div id="contact" className="sec">
         <h2>Contact Us</h2>

@@ -15,16 +15,15 @@ const LoginForm = () => {
   };
 
   const handleLogin = async () => {
-    // console.log(user.email,user.password)
     try {
-      const response = await axios.post("localhost:3001/login", {
+      const response = await axios.post("http://localhost:3001/login", {
         user: {
           email: user.email,
           password: user.password,
         },
       });
 
-      console.log(response);
+      console.log("hi this is the response ", response);
       // After a successful login, store the token
       localStorage.setItem("token", response.data.token);
 
@@ -44,7 +43,7 @@ const LoginForm = () => {
       >
         <img src="./car.png" alt="Car" id="car" />
       </div>
-      <form>
+      <div>
         <label htmlFor="email">Enter your email</label>
         <input
           type="email"
@@ -62,7 +61,7 @@ const LoginForm = () => {
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
         <button onClick={handleLogin}>Login</button>
-      </form>
+      </div>
     </div>
   );
 };

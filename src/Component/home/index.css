@@ -163,15 +163,16 @@ footer a {
     margin-bottom: 20px;
   }
   
-  #book form {
+  #book_now {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    /* flex-direction: column; Display form elements in a column */
+    align-items: center; /* Center align form elements */
   }
   
   #book .form-group {
-    flex: 1;
+    width: 80%; /* Adjust the width as needed */
+    margin-bottom: 20px; /* Add spacing between form groups */
+    margin-right:14px ;
   }
   
   #book label {
@@ -208,7 +209,7 @@ footer a {
   #book button:hover {
     background: #094b90;
   }
-  
+
   /* Styles for the Contact Us section */
 
 #contact {
