@@ -62,7 +62,7 @@ function Index() {
           Anytime, Anywhere
         </h2>
         <img src={img} id="carImage" alt="Car" />
-        <Link to="/book" id="btn" className="btn">
+        <Link to="/vehiclelisting" id="btn" className="btn">
           Book Now
         </Link>
       </section>

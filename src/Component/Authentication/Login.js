@@ -23,18 +23,13 @@ const LoginForm = () => {
         },
       });
 
-      console.log("hi this is the response ", response);
+      console.log("hi this is the response ", response.headers);
       // After a successful login, store the token
-      localStorage.setItem("token", response.data.token);
-
-      // Include the token in your future API requests
-      const token = localStorage.getItem("token");
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      localStorage.setItem("token", response);
     } catch (error) {
       console.error("Login failed:", error);
     }
   };
-
   return (
     <div className="container">
       <div
