@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { VEHICLE_LISTING_API_ENDPOINT } from '../../api/Api';
+import './VehicleListing.css'
 
 function VehicleListing() {
   const [vehicles, setVehicles] = useState([]);
@@ -20,14 +21,16 @@ function VehicleListing() {
   }, []);
 
   return (
-    <div>
-      <h2>Vehicle List</h2>
-      <ul>
+    <div className="vehicle-list-container">
+      <h2 className="heading">Vehicle List</h2>
+      <ul className="vehicle-list">
         {vehicles.map((vehicle) => (
-          <li key={vehicle.id}>
-            Vehicle Type: {vehicle.attributes.vehicle_type}<br />
-            License Plate: {vehicle.attributes.license_plate}<br />
-            Status: {vehicle.attributes.status}
+          <li className="vehicle-item" key={vehicle.id}>
+            <div className="vehicle-details">
+              <span className="vehicle-info">Vehicle Type: {vehicle.attributes.vehicle_type}</span>
+              <span className="vehicle-info">License Plate: {vehicle.attributes.license_plate}</span>
+              <span className="vehicle-info">Status: {vehicle.attributes.status}</span>
+            </div>
           </li>
         ))}
       </ul>

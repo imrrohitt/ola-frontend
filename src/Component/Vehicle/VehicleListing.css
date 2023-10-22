@@ -1,0 +1,43 @@
+.vehicle-list-container {
+    background-color: #094b65;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+  
+  .heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .vehicle-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .vehicle-item {
+    background-color: rgb(98, 100, 233);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease; /* Add a transform animation for hover effect */
+  }
+  
+  .vehicle-item:hover {
+    transform: scale(1.05); /* Scale up on hover for a simple animation effect */
+  }
+  
+  .vehicle-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .vehicle-info {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
