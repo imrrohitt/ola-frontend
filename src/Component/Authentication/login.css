@@ -1,0 +1,57 @@
+/* login.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.car {
+  width: 100px;
+  height: 100px;
+  transform: rotate(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+#car {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+label {
+  font-size: 1.2em;
+  color: #333;
+  margin: 10px 0;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 12px 30px;
+  background: #094b65;
+  color: #fff;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background: #094b90;
+}
