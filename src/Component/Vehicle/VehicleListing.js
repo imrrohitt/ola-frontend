@@ -1,7 +1,9 @@
+// VehicleListing.js
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { VEHICLE_LISTING_API_ENDPOINT } from '../../api/Api';
-import './VehicleListing.css'
+import './VehicleListing.css';
 
 function VehicleListing() {
   const [vehicles, setVehicles] = useState([]);
@@ -25,13 +27,15 @@ function VehicleListing() {
       <h2 className="heading">Vehicle List</h2>
       <ul className="vehicle-list">
         {vehicles.map((vehicle) => (
-          <li className="vehicle-item" key={vehicle.id}>
-            <div className="vehicle-details">
-              <span className="vehicle-info">Vehicle Type: {vehicle.attributes.vehicle_type}</span>
-              <span className="vehicle-info">License Plate: {vehicle.attributes.license_plate}</span>
-              <span className="vehicle-info">Status: {vehicle.attributes.status}</span>
-            </div>
-          </li>
+          <Link to={`/driverlisting/${vehicle.attributes.vehicle_type}`} key={vehicle.attributes.vehicle_type}>
+            <li className="vehicle-item">
+              <div className="vehicle-details">
+                <span className="vehicle-info">Vehicle Type: {vehicle.attributes.vehicle_type}</span>
+                <span className="vehicle-info">License Plate: {vehicle.attributes.license_plate}</span>
+                <span className="vehicle-info">Status: {vehicle.attributes.status}</span>
+              </div>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
