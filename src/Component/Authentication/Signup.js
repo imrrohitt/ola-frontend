@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 
-const LoginForm = () => {
+const SignupForm = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -13,8 +13,8 @@ const LoginForm = () => {
     setRotateCar(true);
   };
 
-  const handleLogin = () => {
-    fetch("http://localhost:3001/login", {
+  const handleSignup= () => {
+    fetch("http://localhost:3001/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const LoginForm = () => {
     .then((response) => {
       console.log(response.status)
       if (!response.ok) {
-        throw new Error("Login failed");
+        throw new Error("Signup failed");
       }
       const authorizationHeader = response.headers.get('Authorization');
       if (authorizationHeader) {
@@ -39,7 +39,7 @@ const LoginForm = () => {
       }
     })
     .catch((error) => {
-      console.error("Login failed:", error);
+      console.error("Signup failed:", error);
     });
 };
 
@@ -69,10 +69,11 @@ const LoginForm = () => {
           value={user.password}
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
-        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleSignup}>Signup</button>
       </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default SignupForm;
+
