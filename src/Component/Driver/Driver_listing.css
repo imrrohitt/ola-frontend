@@ -1,0 +1,31 @@
+/* Driver_listing.css */
+
+.custom-table {
+    width: 100%;
+    max-width: 1000px;
+    
+    border: 1px solid gray;
+    margin: 20px;
+
+  }
+
+  .custom-table th {
+    text-align: center;
+    background-color: #343a40;
+    color: #ffffff;
+    margin: 20px;
+  }
+
+  .custom-table td {
+    text-align: center;
+    border: 1px solid gray;
+    margin: 20px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+  .heading{
+    margin-top: 2%;
+    color: blueviolet;
+  }
