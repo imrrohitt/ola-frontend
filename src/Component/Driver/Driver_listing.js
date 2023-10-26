@@ -6,6 +6,9 @@ function Driver_listing() {
   const [drivers, setDrivers] = useState([]);
   const { vehicle_type } = useParams();
 
+    useEffect(() => {
+        console.log(vehicle_type)
+      const apiUrl = `http://127.0.0.1:3001/api/v1/drivers?vehicle_type=${vehicle_type}`;
   useEffect(() => {
     const apiUrl = `http://127.0.0.1:3001/api/v1/drivers?vehicle_type=${vehicle_type}`;
 
