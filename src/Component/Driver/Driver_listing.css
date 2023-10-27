@@ -1,0 +1,112 @@
+/* Driver_listing.css */
+
+.container {
+    padding: 20px;
+  }
+
+  .heading {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .custom-card {
+    width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin: 10px;
+
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .card-text {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #666;
+  }
+
+  .heading {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #c37b28;
+  }
+
+ /* Styles for the card */
+.cab-card {
+    display: flex;
+    align-items: center;
+    padding: 1.8rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.23);
+    background-color: #fff;
+    justify-content: space-around;
+  }
+
+  /* Styles for the image */
+  .cab-img {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+  }
+
+  /* Styles for the details on the right */
+  .cab-details {
+    flex: 1;
+    color: #2f1faf;
+  }
+
+  .cab-name {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .cab-type {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+  }
+
+  /* Styles for the list of offerings */
+  .cab-offerings {
+    list-style: none;
+    padding: 0;
+  }
+
+  .cab-offerings li {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 5px 0;
+  }
+
+  .amenities-icon {
+    width: 17px;
+    margin-right: 5px;
+  }
+/* Style for the badge container */
+.rating-badge {
+    display: inline-block;
+    background-color: #439747; /* Badge background color (you can change it) */
+    color: #fff; /* Text color */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 10px; /* Rounded corners */
+  }
+
+  /* Style for the rating number */
+  .rating-number {
+    font-weight: bold;
+  }
+
+  /* Style for the ratings count */
+  .ratings-count {
+    margin-left: 10px; /* Spacing between the rating and count */
+  }
